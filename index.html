@@ -32,8 +32,8 @@
 
       .card {
         position: relative;
-        width: min(82vw, 700px);
-        padding: 42px 30px 26px;
+        width: min(86vw, 760px);
+        padding: 52px 30px 30px;
         border-radius: 28px;
         background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
         border: 4px solid rgba(255, 255, 255, 0.08);
@@ -99,9 +99,16 @@
         top: -8px;
       }
 
-      .message {
+      .message-wrap {
         position: relative;
-        z-index: 1;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 26px;
+      }
+
+      .message {
         font-size: clamp(1.3rem, 2vw, 2.3rem);
         line-height: 1.6;
         text-align: center;
@@ -115,6 +122,207 @@
         font-size: 0.8em;
         opacity: 0.9;
         margin-top: 14px;
+      }
+
+      .character {
+        position: relative;
+        width: 120px;
+        height: 150px;
+        flex-shrink: 0;
+      }
+
+      .character.spiderman {
+        transform: translateY(-8px);
+      }
+
+      .character.hulk {
+        transform: scale(1.05);
+      }
+
+      .head {
+        position: absolute;
+        left: 50%;
+        top: 16px;
+        transform: translateX(-50%);
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: #f4c7a1;
+        border: 4px solid rgba(0,0,0,0.12);
+      }
+
+      .spiderman .head {
+        background: #f5d6b1;
+      }
+
+      .hulk .head {
+        background: #86d279;
+      }
+
+      .eye {
+        position: absolute;
+        top: 34px;
+        width: 10px;
+        height: 10px;
+        background: #1f1f1f;
+        border-radius: 50%;
+      }
+
+      .spiderman .eye.left { left: 36px; }
+      .spiderman .eye.right { right: 36px; }
+
+      .hulk .eye.left { left: 34px; }
+      .hulk .eye.right { right: 34px; }
+
+      .body {
+        position: absolute;
+        left: 50%;
+        top: 66px;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 58px;
+        border-radius: 16px 16px 12px 12px;
+      }
+
+      .spiderman .body {
+        background: #d3242f;
+      }
+
+      .hulk .body {
+        background: #5aa84d;
+      }
+
+      .arm,
+      .leg {
+        position: absolute;
+        background: #f1d0a8;
+      }
+
+      .spiderman .arm {
+        background: #e33849;
+      }
+
+      .hulk .arm {
+        background: #4fa03e;
+      }
+
+      .spiderman .arm.left {
+        left: 8px;
+        top: 78px;
+        width: 16px;
+        height: 46px;
+        border-radius: 12px;
+      }
+
+      .spiderman .arm.right {
+        right: 8px;
+        top: 78px;
+        width: 16px;
+        height: 46px;
+        border-radius: 12px;
+      }
+
+      .hulk .arm.left {
+        left: 4px;
+        top: 80px;
+        width: 18px;
+        height: 52px;
+        border-radius: 12px;
+      }
+
+      .hulk .arm.right {
+        right: 4px;
+        top: 80px;
+        width: 18px;
+        height: 52px;
+        border-radius: 12px;
+      }
+
+      .spiderman .leg {
+        top: 118px;
+        width: 18px;
+        height: 36px;
+        background: #d3242f;
+        border-radius: 10px;
+      }
+
+      .hulk .leg {
+        top: 118px;
+        width: 20px;
+        height: 36px;
+        background: #4ca144;
+        border-radius: 10px;
+      }
+
+      .spiderman .leg.left { left: 35px; }
+      .spiderman .leg.right { right: 35px; }
+      .hulk .leg.left { left: 30px; }
+      .hulk .leg.right { right: 30px; }
+
+      .mask {
+        position: absolute;
+        left: 50%;
+        top: 25px;
+        transform: translateX(-50%);
+        width: 58px;
+        height: 28px;
+        border-radius: 50% 50% 34% 34%;
+      }
+
+      .spiderman .mask {
+        background: #d3242f;
+      }
+
+      .hulk .mask {
+        display: none;
+      }
+
+      .web {
+        position: absolute;
+        left: 50%;
+        top: 36px;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 60px;
+        background: rgba(255,255,255,0.6);
+        border-radius: 999px;
+      }
+
+      .web::before,
+      .web::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 32px;
+        height: 4px;
+        background: rgba(255,255,255,0.6);
+        border-radius: 999px;
+      }
+
+      .web::before { top: 14px; }
+      .web::after { top: 30px; }
+
+      .spider {
+        position: absolute;
+        left: 50%;
+        top: 103px;
+        transform: translateX(-50%);
+        width: 18px;
+        height: 18px;
+        background: #1c1c1c;
+        border-radius: 50%;
+      }
+
+      .hulk-biceps {
+        position: absolute;
+        left: 50%;
+        top: 78px;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
       }
 
       .flower {
@@ -175,6 +383,16 @@
 
       .leaf.left { left: 18px; bottom: 0; transform: rotate(-35deg); }
       .leaf.right { right: 18px; bottom: 0; transform: scaleX(-1) rotate(-35deg); }
+
+      @media (max-width: 680px) {
+        .message-wrap {
+          flex-direction: column;
+        }
+
+        .character {
+          transform: scale(0.8);
+        }
+      }
     </style>
   </head>
   <body>
@@ -183,12 +401,42 @@
       <div class="cloud"></div>
       <div class="sparkle"></div>
 
-      <div class="message">
-        “I just spent hours coding this website,<br>
-        be thankful.<br>
-        And hi.<br>
-        Have a good day.”
-        <span class="tiny">✨ from your favorite coder ✨</span>
+      <div class="message-wrap">
+        <div class="character spiderman">
+          <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+          </div>
+          <div class="mask"></div>
+          <div class="web"></div>
+          <div class="body"></div>
+          <div class="arm left"></div>
+          <div class="arm right"></div>
+          <div class="leg left"></div>
+          <div class="leg right"></div>
+          <div class="spider"></div>
+        </div>
+
+        <div class="message">
+          “I just spent hours coding this website,<br>
+          be thankful.<br>
+          And hi.<br>
+          Have a good day.”
+          <span class="tiny">✨ from your favorite coder ✨</span>
+        </div>
+
+        <div class="character hulk">
+          <div class="head">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+          </div>
+          <div class="body"></div>
+          <div class="arm left"></div>
+          <div class="arm right"></div>
+          <div class="leg left"></div>
+          <div class="leg right"></div>
+          <div class="hulk-biceps"></div>
+        </div>
       </div>
 
       <div class="flower left">
