@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cute Card</title>
+    <style>
+      :root {
+        --bg-dark: #0f2d25;
+        --bg-mid: #1a4336;
+        --card: #1e4d41;
+        --card-2: #285d50;
+        --text: #edf8ee;
+        --accent: #c7f6b5;
+        --accent-2: #ffd9a8;
+        --outline: #103b31;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
+        background: radial-gradient(circle at top, #173d34 0%, var(--bg-mid) 32%, var(--bg-dark) 100%);
+        color: var(--text);
+      }
+
+      .card {
+        position: relative;
+        width: min(82vw, 700px);
+        padding: 42px 30px 26px;
+        border-radius: 28px;
+        background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+        border: 4px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 0 10px rgba(199, 246, 181, 0.08);
+        overflow: hidden;
+      }
+
+      .sparkle,
+      .sparkle::before,
+      .sparkle::after {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.75);
+        clip-path: polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%);
+      }
+
+      .sparkle { top: 22px; right: 72px; }
+      .sparkle::before { top: 36px; left: -38px; opacity: 0.8; }
+      .sparkle::after { top: 54px; left: 44px; opacity: 0.6; }
+
+      .sun {
+        position: absolute;
+        right: 38px;
+        top: 30px;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffe8ac 0%, #f7d38a 60%, #f0bf69 100%);
+        box-shadow: 0 0 28px rgba(247, 211, 138, 0.7);
+      }
+
+      .cloud {
+        position: absolute;
+        left: 30px;
+        top: 32px;
+        width: 70px;
+        height: 28px;
+        background: rgba(255,255,255,0.14);
+        border-radius: 999px;
+      }
+
+      .cloud::before,
+      .cloud::after {
+        content: "";
+        position: absolute;
+        background: rgba(255,255,255,0.14);
+        border-radius: 50%;
+      }
+
+      .cloud::before {
+        width: 28px;
+        height: 28px;
+        left: 12px;
+        top: -10px;
+      }
+
+      .cloud::after {
+        width: 26px;
+        height: 26px;
+        right: 10px;
+        top: -8px;
+      }
+
+      .message {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(1.3rem, 2vw, 2.3rem);
+        line-height: 1.6;
+        text-align: center;
+        font-weight: 700;
+        color: var(--text);
+        text-shadow: 0 2px 0 rgba(0,0,0,0.1);
+      }
+
+      .message .tiny {
+        display: block;
+        font-size: 0.8em;
+        opacity: 0.9;
+        margin-top: 14px;
+      }
+
+      .flower {
+        position: absolute;
+        bottom: 18px;
+        width: 90px;
+        height: 90px;
+      }
+
+      .flower.left { left: 16px; }
+      .flower.right { right: 16px; }
+
+      .petal {
+        position: absolute;
+        width: 24px;
+        height: 32px;
+        background: #ffdd88;
+        border-radius: 60% 60% 60% 60%;
+        border: 2px solid rgba(17, 52, 44, 0.28);
+      }
+
+      .petal:nth-child(1) { left: 32px; top: 0; transform: rotate(0deg); }
+      .petal:nth-child(2) { left: 0; top: 28px; transform: rotate(-45deg); }
+      .petal:nth-child(3) { left: 32px; bottom: 0; transform: rotate(0deg); }
+      .petal:nth-child(4) { right: 0; top: 28px; transform: rotate(45deg); }
+
+      .center-dot {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 18px;
+        height: 18px;
+        background: #f1a15b;
+        border-radius: 50%;
+        border: 2px solid rgba(17, 52, 44, 0.35);
+      }
+
+      .stem {
+        position: absolute;
+        left: 50%;
+        bottom: -34px;
+        transform: translateX(-50%);
+        width: 7px;
+        height: 40px;
+        background: #7ecb84;
+        border-radius: 10px;
+      }
+
+      .leaf {
+        position: absolute;
+        width: 18px;
+        height: 28px;
+        background: #8fe08d;
+        border-radius: 80% 0 80% 0;
+        border: 2px solid rgba(17, 52, 44, 0.22);
+      }
+
+      .leaf.left { left: 18px; bottom: 0; transform: rotate(-35deg); }
+      .leaf.right { right: 18px; bottom: 0; transform: scaleX(-1) rotate(-35deg); }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="sun"></div>
+      <div class="cloud"></div>
+      <div class="sparkle"></div>
+
+      <div class="message">
+        “I just spent hours coding this website,<br>
+        be thankful.<br>
+        And hi.<br>
+        Have a good day.”
+        <span class="tiny">✨ from your favorite coder ✨</span>
+      </div>
+
+      <div class="flower left">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center-dot"></div>
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+
+      <div class="flower right">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="center-dot"></div>
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+    </div>
+  </body>
+</html>
